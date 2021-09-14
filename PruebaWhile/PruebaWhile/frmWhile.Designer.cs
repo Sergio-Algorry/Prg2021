@@ -33,23 +33,25 @@ namespace PruebaWhile
             this.ActorRojo = new System.Windows.Forms.Label();
             this.ActorAzul = new System.Windows.Forms.Label();
             this.btMover = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btPosicion
             // 
             this.btPosicion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btPosicion.Location = new System.Drawing.Point(155, 12);
+            this.btPosicion.Location = new System.Drawing.Point(217, 26);
             this.btPosicion.Name = "btPosicion";
             this.btPosicion.Size = new System.Drawing.Size(100, 40);
             this.btPosicion.TabIndex = 0;
             this.btPosicion.Text = "Acomodar";
             this.btPosicion.UseVisualStyleBackColor = true;
             this.btPosicion.Click += new System.EventHandler(this.btPosicion_Click);
+            this.btPosicion.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btPosicion_MouseMove);
             // 
             // ActorRojo
             // 
             this.ActorRojo.BackColor = System.Drawing.Color.Red;
-            this.ActorRojo.Location = new System.Drawing.Point(195, 100);
+            this.ActorRojo.Location = new System.Drawing.Point(63, 97);
             this.ActorRojo.Name = "ActorRojo";
             this.ActorRojo.Size = new System.Drawing.Size(60, 60);
             this.ActorRojo.TabIndex = 1;
@@ -75,11 +77,21 @@ namespace PruebaWhile
             this.btMover.UseVisualStyleBackColor = true;
             this.btMover.Click += new System.EventHandler(this.btMover_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(370, 127);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "label1";
+            // 
             // frmWhile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 205);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btMover);
             this.Controls.Add(this.ActorAzul);
             this.Controls.Add(this.ActorRojo);
@@ -87,6 +99,7 @@ namespace PruebaWhile
             this.Name = "frmWhile";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -96,6 +109,7 @@ namespace PruebaWhile
         private System.Windows.Forms.Label ActorRojo;
         private System.Windows.Forms.Label ActorAzul;
         private System.Windows.Forms.Button btMover;
+        private System.Windows.Forms.Label label1;
     }
 }
 

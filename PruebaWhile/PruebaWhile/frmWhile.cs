@@ -31,8 +31,9 @@ namespace PruebaWhile
             {
                 ActorRojo.Left = ActorRojo.Left + 1;
                 ActorAzul.Left = ActorAzul.Left - 1;
-
                 this.Refresh();
+
+                
             }
 
 
@@ -48,6 +49,12 @@ namespace PruebaWhile
             //        break;
             //    }
             //}
+        }
+
+        private void btPosicion_MouseMove(object sender, MouseEventArgs e)
+        {
+            btPosicion.Left = btPosicion.Left + 50;
+
         }
     }
 }
