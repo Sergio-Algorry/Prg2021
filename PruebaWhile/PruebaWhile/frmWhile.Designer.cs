@@ -29,11 +29,13 @@ namespace PruebaWhile
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btPosicion = new System.Windows.Forms.Button();
             this.ActorRojo = new System.Windows.Forms.Label();
             this.ActorAzul = new System.Windows.Forms.Label();
             this.btMover = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // btPosicion
@@ -86,6 +88,10 @@ namespace PruebaWhile
             this.label1.TabIndex = 4;
             this.label1.Text = "label1";
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // frmWhile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -110,6 +116,7 @@ namespace PruebaWhile
         private System.Windows.Forms.Label ActorAzul;
         private System.Windows.Forms.Button btMover;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
