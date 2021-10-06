@@ -34,6 +34,9 @@ namespace EjemploListas
             this.btCargar = new System.Windows.Forms.Button();
             this.lblLista = new System.Windows.Forms.Label();
             this.btMostrar = new System.Windows.Forms.Button();
+            this.txtNac = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btFiltro = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -55,10 +58,10 @@ namespace EjemploListas
             // btCargar
             // 
             this.btCargar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btCargar.Location = new System.Drawing.Point(578, 38);
+            this.btCargar.Location = new System.Drawing.Point(425, 34);
             this.btCargar.Name = "btCargar";
             this.btCargar.Size = new System.Drawing.Size(88, 30);
-            this.btCargar.TabIndex = 2;
+            this.btCargar.TabIndex = 3;
             this.btCargar.Text = "Cargar";
             this.btCargar.UseVisualStyleBackColor = true;
             this.btCargar.Click += new System.EventHandler(this.btCargar_Click);
@@ -76,7 +79,7 @@ namespace EjemploListas
             // btMostrar
             // 
             this.btMostrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btMostrar.Location = new System.Drawing.Point(685, 38);
+            this.btMostrar.Location = new System.Drawing.Point(519, 34);
             this.btMostrar.Name = "btMostrar";
             this.btMostrar.Size = new System.Drawing.Size(88, 30);
             this.btMostrar.TabIndex = 4;
@@ -84,11 +87,41 @@ namespace EjemploListas
             this.btMostrar.UseVisualStyleBackColor = true;
             this.btMostrar.Click += new System.EventHandler(this.btMostrar_Click);
             // 
+            // txtNac
+            // 
+            this.txtNac.Location = new System.Drawing.Point(249, 44);
+            this.txtNac.Name = "txtNac";
+            this.txtNac.Size = new System.Drawing.Size(62, 20);
+            this.txtNac.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(246, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(52, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Año Nac.";
+            // 
+            // btFiltro
+            // 
+            this.btFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btFiltro.Location = new System.Drawing.Point(613, 34);
+            this.btFiltro.Name = "btFiltro";
+            this.btFiltro.Size = new System.Drawing.Size(127, 30);
+            this.btFiltro.TabIndex = 7;
+            this.btFiltro.Text = "Mostrar con Filtro";
+            this.btFiltro.UseVisualStyleBackColor = true;
+            this.btFiltro.Click += new System.EventHandler(this.btFiltro_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btFiltro);
+            this.Controls.Add(this.txtNac);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btMostrar);
             this.Controls.Add(this.lblLista);
             this.Controls.Add(this.btCargar);
@@ -108,6 +141,9 @@ namespace EjemploListas
         private System.Windows.Forms.Button btCargar;
         private System.Windows.Forms.Label lblLista;
         private System.Windows.Forms.Button btMostrar;
+        private System.Windows.Forms.TextBox txtNac;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btFiltro;
     }
 }
 
