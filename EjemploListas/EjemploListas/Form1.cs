@@ -41,10 +41,10 @@ namespace EjemploListas
             }
             else
             {
+                btMostrar_Click(null, null);
                 txtNac.Text = "";
                 txtNombre.Text = "";
                 txtNombre.Focus();
-                lblLista.Text = "Persona aceptada";
             }
         }
 
@@ -62,6 +62,25 @@ namespace EjemploListas
         private void btFiltro_Click(object sender, EventArgs e)
         {
             lblLista.Text = Lista.ToStringFiltrado(2000);
+        }
+
+        private void btBuscar_Click(object sender, EventArgs e)
+        {
+            Persona per = Lista.BuscarPersona(Convert.ToInt32(txtCodigo.Text));
+
+            if (per.Código > 0)
+            {
+                txtNombre.Text = per.Nombre;
+                txtNac.Text = per.AñoNacimiento.ToString();
+
+                txtNombre.Focus();
+            }
+            else
+            {
+                txtCodigo.Text = "no existe";
+                txtCodigo.Focus();
+                txtCodigo.SelectAll();
+            }
         }
 
         //private void Redimensionar()
