@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,25 +10,27 @@ namespace EjemploListas.Clases
     public class ListaPersonas
     {
         public Persona[] Personas { get; set; }
+        public DataTable DT { get; set; } = new DataTable();
         public int UltimoCodigo { get; set; } = 0;
 
-        //public bool AddPersona(string nombre, string año)
-        //{
-        //    Persona persona = new Persona();
-        //    persona.Nombre = nombre;
-        //    persona.AñoNacimiento = Convert.ToInt32(año);
+        public ListaPersonas()
+        {
+            DT.TableName = "ListaPersonas";
+            DT.Columns.Add("Id");
+            DT.Columns.Add("Nombre");
+            DT.Columns.Add("AñoNacimiento");
 
-        //    bool resp = persona.Validar();
-
-        //    if (resp)
-        //    {
-        //        UltimoCodigo = UltimoCodigo + 1;
-        //        persona.Id = UltimoCodigo;
-        //        Redimensionar();
-        //        Personas[Personas.Length - 1] = persona;
-        //    }
-        //    return resp;
-        //}
+            LeerDT_DeArchivo();
+        }
+        public void LeerDT_DeArchivo()
+        {
+            if(System.IO.File.Exists("Lista.xml"))
+            {
+                DT.Clear();
+                DT.ReadXml("Lista.xml");
+                UltimoCodigo = DT.Rows.Count;
+            }
+        }
 
         public bool UpdatePersona(Persona persona)
         {
@@ -39,8 +42,15 @@ namespace EjemploListas.Clases
                 {
                     UltimoCodigo = UltimoCodigo + 1;
                     persona.Id = UltimoCodigo;
-                    Redimensionar();
-                    Personas[Personas.Length - 1] = persona;
+
+                    DT.Rows.Add();
+                    int NumeroRegistroNuevo = DT.Rows.Count - 1;
+                    
+                    DT.Rows[NumeroRegistroNuevo]["Id"] = persona.Id.ToString();
+                    DT.Rows[NumeroRegistroNuevo]["Nombre"] = persona.Nombre;
+                    DT.Rows[NumeroRegistroNuevo]["AñoNacimiento"] = persona.AñoNacimiento.ToString();
+
+                    DT.WriteXml("Lista.xml");
                 }
                 else
                 {
@@ -124,13 +134,13 @@ namespace EjemploListas.Clases
         public override string ToString()
         {
             string Resp = "Lista:\r\n";
-            foreach (Persona item in Personas)
-            {
-                Resp = Resp
-                    + item.Id.ToString() + " - "
-                    + item.AñoNacimiento.ToString()
-                    + " - " + item.Nombre + "\r\n";
-            }
+            //foreach (Persona item in Personas)
+            //{
+            //    Resp = Resp
+            //        + item.Id.ToString() + " - "
+            //        + item.AñoNacimiento.ToString()
+            //        + " - " + item.Nombre + "\r\n";
+            //}
 
             return Resp;
         }
@@ -151,6 +161,5 @@ namespace EjemploListas.Clases
 
             return Resp;
         }
-
     }
 }

@@ -11,6 +11,8 @@ namespace EjemploListas
         public Form1()
         {
             InitializeComponent();
+
+            dg.DataSource = Lista.DT;
         }
 
         private void btCargar_Click(object sender, EventArgs e)

@@ -40,6 +40,8 @@ namespace EjemploListas
             this.btBuscar = new System.Windows.Forms.Button();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.btBorrar = new System.Windows.Forms.Button();
+            this.dg = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dg)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -73,7 +75,7 @@ namespace EjemploListas
             // 
             this.lblLista.AutoSize = true;
             this.lblLista.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLista.Location = new System.Drawing.Point(27, 71);
+            this.lblLista.Location = new System.Drawing.Point(27, 410);
             this.lblLista.Name = "lblLista";
             this.lblLista.Size = new System.Drawing.Size(72, 31);
             this.lblLista.TabIndex = 3;
@@ -146,11 +148,20 @@ namespace EjemploListas
             this.btBorrar.UseVisualStyleBackColor = true;
             this.btBorrar.Click += new System.EventHandler(this.btBorrar_Click);
             // 
+            // dg
+            // 
+            this.dg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg.Location = new System.Drawing.Point(33, 77);
+            this.dg.Name = "dg";
+            this.dg.Size = new System.Drawing.Size(386, 150);
+            this.dg.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(657, 450);
+            this.Controls.Add(this.dg);
             this.Controls.Add(this.btBorrar);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.btBuscar);
@@ -164,6 +175,7 @@ namespace EjemploListas
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.dg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,6 +194,7 @@ namespace EjemploListas
         private System.Windows.Forms.Button btBuscar;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Button btBorrar;
+        private System.Windows.Forms.DataGridView dg;
     }
 }
 
