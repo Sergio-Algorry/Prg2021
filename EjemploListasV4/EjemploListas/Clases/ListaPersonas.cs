@@ -9,9 +9,8 @@ namespace EjemploListas.Clases
 {
     public class ListaPersonas
     {
-        public Persona[] Personas { get; set; }
         public DataTable DT { get; set; } = new DataTable();
-        public int UltimoCodigo { get; set; } = 0;
+        public int UltimoId { get; set; } = 0;
 
         public ListaPersonas()
         {
@@ -22,13 +21,21 @@ namespace EjemploListas.Clases
 
             LeerDT_DeArchivo();
         }
+
         public void LeerDT_DeArchivo()
         {
             if(System.IO.File.Exists("Lista.xml"))
             {
-                DT.Clear();
+                //DT.Clear();
                 DT.ReadXml("Lista.xml");
-                UltimoCodigo = DT.Rows.Count;
+                UltimoId = 0;
+                for (int i = 0; i < DT.Rows.Count; i++)
+                {
+                    if( Convert.ToInt32( DT.Rows[i]["Id"])>UltimoId)
+                    {
+                        UltimoId = Convert.ToInt32(DT.Rows[i]["Id"]);
+                    }
+                }
             }
         }
 
@@ -40,8 +47,8 @@ namespace EjemploListas.Clases
             {
                 if (persona.Id == 0)
                 {
-                    UltimoCodigo = UltimoCodigo + 1;
-                    persona.Id = UltimoCodigo;
+                    UltimoId = UltimoId + 1;
+                    persona.Id = UltimoId;
 
                     DT.Rows.Add();
                     int NumeroRegistroNuevo = DT.Rows.Count - 1;
@@ -54,11 +61,13 @@ namespace EjemploListas.Clases
                 }
                 else
                 {
-                    for (int i = 0; i < Personas.Length; i++)
+                    for (int fila = 0; fila < DT.Rows.Count; fila++)
                     {
-                        if(Personas[i].Id==persona.Id)
+                        if(Convert.ToInt32( DT.Rows[fila]["Id"])==persona.Id)
                         {
-                            Personas[i] = persona;
+                            DT.Rows[fila]["Nombre"] = persona.Nombre;
+                            DT.Rows[fila]["AñoNacimiento"] = persona.AñoNacimiento.ToString();
+                            DT.WriteXml("Lista.xml");
                             break;
                         }
                     }
@@ -70,11 +79,13 @@ namespace EjemploListas.Clases
         public Persona BuscarPersona(int id)
         {
             Persona res = new Persona();
-            foreach (Persona item in Personas)
+            for (int fila = 0; fila < DT.Rows.Count; fila++)
             {
-                if (item.Id == id)
+                if (Convert.ToInt32(DT.Rows[fila]["Id"]) == id)
                 {
-                    res = item;
+                    res.Id = Convert.ToInt32(DT.Rows[fila]["Id"]);
+                    res.Nombre = DT.Rows[fila]["Nombre"].ToString();
+                    res.AñoNacimiento = Convert.ToInt32(DT.Rows[fila]["AñoNacimiento"]);
                     break;
                 }
             }
@@ -85,81 +96,18 @@ namespace EjemploListas.Clases
         public bool DeletePersona(Persona persona)
         {
             bool resp = false;
-
-            for (int i = 0; i < Personas.Length; i++)
+            for (int fila = 0; fila < DT.Rows.Count; fila++)
             {
-                if (Personas[i].Id == persona.Id)
+                if (Convert.ToInt32(DT.Rows[fila]["Id"]) == persona.Id)
                 {
-                    EliminarRegistro(i);
+                    DT.Rows[fila].Delete();
+                    DT.WriteXml("Lista.xml");
+                    resp = true;
                     break;
                 }
             }
 
             return resp;
-        }
-
-        public void Redimensionar()
-        {
-            if (Personas == null)
-            {
-                Personas = new Persona[1];
-            }
-            else
-            {
-                Persona[] arraux = new Persona[Personas.Length + 1];
-                for (int i = 0; i < Personas.Length; i++)
-                {
-                    arraux[i] = Personas[i];
-                }
-                Personas = arraux;
-            }
-
-        }
-
-        public void EliminarRegistro(int posicion)
-        {
-            for (int i = posicion; i < Personas.Length-1; i++)
-            {
-                Personas[i] = Personas[i + 1];
-            }
-
-            Persona[] arraux = new Persona[Personas.Length - 1];
-            for (int i = 0; i < Personas.Length-1; i++)
-            {
-                arraux[i] = Personas[i];
-            }
-            Personas = arraux;
-        }
-
-        public override string ToString()
-        {
-            string Resp = "Lista:\r\n";
-            //foreach (Persona item in Personas)
-            //{
-            //    Resp = Resp
-            //        + item.Id.ToString() + " - "
-            //        + item.AñoNacimiento.ToString()
-            //        + " - " + item.Nombre + "\r\n";
-            //}
-
-            return Resp;
-        }
-
-        public string ToStringFiltrado(int añoMinimo)
-        {
-            string Resp = "Lista:\r\n";
-            foreach (Persona item in Personas)
-            {
-                if (item.AñoNacimiento >= añoMinimo)
-                {
-                    Resp = Resp
-                        + item.Id.ToString() + " - "
-                        + item.AñoNacimiento.ToString()
-                        + " - " + item.Nombre + "\r\n";
-                }
-            }
-
-            return Resp;
         }
     }
 }

@@ -33,16 +33,6 @@ namespace EjemploListas
             per = new Persona();
         }
 
-        private void btMostrar_Click(object sender, EventArgs e)
-        {
-            lblLista.Text = Lista.ToString();
-        }
-
-        private void btFiltro_Click(object sender, EventArgs e)
-        {
-            lblLista.Text = Lista.ToStringFiltrado(2000);
-        }
-
         private void btBuscar_Click(object sender, EventArgs e)
         {
             per = Lista.BuscarPersona(Convert.ToInt32(txtCodigo.Text));
@@ -65,24 +55,28 @@ namespace EjemploListas
 
         private void btBorrar_Click(object sender, EventArgs e)
         {
-            if(!Lista.DeletePersona(per))
+            if(Lista.DeletePersona(per))
             {
                 limpiar();
             }
             else
             {
                 lblLista.Text = "El registro " + per.Nombre + " no se pudo borrar.";
-                limpiar();
             }
             per = new Persona();
         }
 
         private void limpiar()
         {
-            btMostrar_Click(null, null);
             txtNac.Text = "";
             txtNombre.Text = "";
             txtNombre.Focus();
+            lblLista.Text = "";
+        }
+
+        private void dg_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var i = e.RowIndex;
         }
     }
 }

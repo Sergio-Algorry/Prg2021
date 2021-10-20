@@ -33,10 +33,8 @@ namespace EjemploListas
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.btCargar = new System.Windows.Forms.Button();
             this.lblLista = new System.Windows.Forms.Label();
-            this.btMostrar = new System.Windows.Forms.Button();
             this.txtNac = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btFiltro = new System.Windows.Forms.Button();
             this.btBuscar = new System.Windows.Forms.Button();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.btBorrar = new System.Windows.Forms.Button();
@@ -77,20 +75,8 @@ namespace EjemploListas
             this.lblLista.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLista.Location = new System.Drawing.Point(27, 410);
             this.lblLista.Name = "lblLista";
-            this.lblLista.Size = new System.Drawing.Size(72, 31);
+            this.lblLista.Size = new System.Drawing.Size(0, 31);
             this.lblLista.TabIndex = 3;
-            this.lblLista.Text = "Lista";
-            // 
-            // btMostrar
-            // 
-            this.btMostrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btMostrar.Location = new System.Drawing.Point(425, 108);
-            this.btMostrar.Name = "btMostrar";
-            this.btMostrar.Size = new System.Drawing.Size(88, 30);
-            this.btMostrar.TabIndex = 4;
-            this.btMostrar.Text = "Mostrar";
-            this.btMostrar.UseVisualStyleBackColor = true;
-            this.btMostrar.Click += new System.EventHandler(this.btMostrar_Click);
             // 
             // txtNac
             // 
@@ -107,17 +93,6 @@ namespace EjemploListas
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Año Nac.";
-            // 
-            // btFiltro
-            // 
-            this.btFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btFiltro.Location = new System.Drawing.Point(519, 108);
-            this.btFiltro.Name = "btFiltro";
-            this.btFiltro.Size = new System.Drawing.Size(127, 30);
-            this.btFiltro.TabIndex = 7;
-            this.btFiltro.Text = "Mostrar con Filtro";
-            this.btFiltro.UseVisualStyleBackColor = true;
-            this.btFiltro.Click += new System.EventHandler(this.btFiltro_Click);
             // 
             // btBuscar
             // 
@@ -140,7 +115,7 @@ namespace EjemploListas
             // btBorrar
             // 
             this.btBorrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btBorrar.Location = new System.Drawing.Point(517, 34);
+            this.btBorrar.Location = new System.Drawing.Point(423, 113);
             this.btBorrar.Name = "btBorrar";
             this.btBorrar.Size = new System.Drawing.Size(88, 30);
             this.btBorrar.TabIndex = 10;
@@ -153,11 +128,13 @@ namespace EjemploListas
             this.dg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dg.Location = new System.Drawing.Point(33, 77);
             this.dg.Name = "dg";
-            this.dg.Size = new System.Drawing.Size(386, 150);
+            this.dg.Size = new System.Drawing.Size(386, 306);
             this.dg.TabIndex = 11;
+            this.dg.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dg_CellClick);
             // 
             // Form1
             // 
+            this.AcceptButton = this.btCargar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(657, 450);
@@ -165,10 +142,8 @@ namespace EjemploListas
             this.Controls.Add(this.btBorrar);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.btBuscar);
-            this.Controls.Add(this.btFiltro);
             this.Controls.Add(this.txtNac);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btMostrar);
             this.Controls.Add(this.lblLista);
             this.Controls.Add(this.btCargar);
             this.Controls.Add(this.txtNombre);
@@ -187,10 +162,8 @@ namespace EjemploListas
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Button btCargar;
         private System.Windows.Forms.Label lblLista;
-        private System.Windows.Forms.Button btMostrar;
         private System.Windows.Forms.TextBox txtNac;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btFiltro;
         private System.Windows.Forms.Button btBuscar;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Button btBorrar;
